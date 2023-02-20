@@ -11,4 +11,14 @@ class model: contract.model {
     override fun showAllEntries(): ArrayList<String>? {
         return namesList
     }
+
+    override fun onDelete(id: Int): Boolean {
+        namesList?.removeAt(id)
+        return true
+    }
+
+    override fun onUpdate(id: Int, name: String): Boolean {
+        namesList?.set(id, name)
+        return true
+    }
 }

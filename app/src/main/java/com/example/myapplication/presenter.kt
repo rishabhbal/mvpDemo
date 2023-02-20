@@ -15,4 +15,18 @@ class presenter(private var model: contract.model, private var view: contract.vi
         view.setTextView(name)
     }
 
+    override fun onDeletePress(id: String) {
+        val response = model.onDelete(id.toInt())
+        if (response == true){
+            view.setTextView(model.showAllEntries())
+        }
+    }
+
+    override fun onUpdate(id: String, name: String) {
+        val response = model.onUpdate(id.toInt(), name)
+        if (response == true){
+            view.setTextView(model.showAllEntries())
+        }
+    }
+
 }
